@@ -1,0 +1,64 @@
+<html>
+   <head>
+      <title>A Game</title>
+      <script>
+
+      var  reset_operands = function(){
+         document.getElementsByClassName("operand_left")[0].innerHTML = Math.floor((Math.random() * 10) + 1)
+         document.getElementsByClassName("operand_right")[0].innerHTML = Math.floor((Math.random() * 10) + 1)
+      }
+      var calculate = function(){
+         document.getElementById('right_result').innerHTML = ""
+         document.getElementById('wrong_result').innerHTML = ""
+         
+         var operand_left = parseInt(document.getElementsByClassName("operand_left")[0].innerHTML);
+         var operand_right = parseInt(document.getElementsByClassName("operand_right")[0].innerHTML);
+         var answer = parseInt(document.getElementsByClassName("answer")[0].value)
+         var result = operand_left + operand_right;
+         if(result == answer){
+            document.getElementById('right_result').innerHTML = "Yay! That's correct"
+            reset_operands();
+            document.getElementsByClassName("answer")[0].value = ""
+         } else {
+            document.getElementById('wrong_result').innerHTML = "Nah! Try again"
+            document.getElementsByClassName("answer")[0].value = ""
+         }
+
+
+      }   
+      </script>
+      <style>
+         body {
+            background-color: linen;
+            margin-top: 10px;
+         }
+         form {
+            text-align: center;}
+         span, input {
+            font-size: 300px;
+         },
+        #right_result {
+           font-color: green;
+           font-size: 20px;
+      }
+         </style>
+   </head>
+   <body>
+      <form action="#">
+         <span id="right_result" style="font-size: 100px; color: green"> </span>
+         <span id="wrong_result" style="font-size: 100px; color: red"> </span>
+         <br />
+         <span class='operand_left'>
+            3
+         </span>
+         <span class='operand'>
+            +
+         </span>
+         <span class='operand_right'>
+            5
+         </span>
+         <input type="text" name="answer" class="answer" id="answer" value="" size="2">
+         <input name="submit" type="submit" onclick="calculate(); return false;">
+      </form>
+   </body>
+</html>
